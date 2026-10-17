@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 
 from db import RANKING_CACHE_KEY, cache, connect, create_tables
+from telemetry import configure_telemetry
 
 RANKING_CACHE_SECONDS = 30
 
@@ -16,6 +17,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="もっちり頒布マネージャー API", lifespan=lifespan)
+configure_telemetry(app)
 
 
 @app.get("/health")

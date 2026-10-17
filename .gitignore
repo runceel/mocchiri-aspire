@@ -9,3 +9,5 @@ node_modules/
 # ロックファイルはこのリポジトリには含めない
 uv.lock
 package-lock.json
+dist/
+.aspire/

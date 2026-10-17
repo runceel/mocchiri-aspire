@@ -6,9 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      // API の URL は直書き（ポートを変えたらここも直す）
+      // API の URL は Aspire の AppHost が API_HTTP として渡す（apphost.mts の withReference(api)）
       '/api': {
-        target: 'http://localhost:8000',
+        target: process.env.API_HTTP,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

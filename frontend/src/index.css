@@ -1,0 +1,120 @@
+:root {
+  font-family: 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  color: #222;
+  background: #fff;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+header {
+  border-bottom: 2px solid #222;
+  margin-bottom: 16px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+header p {
+  margin: 4px 0 12px;
+  color: #555;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  align-items: start;
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background: #f2f2f2;
+}
+
+.num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+button {
+  font: inherit;
+  padding: 4px 12px;
+  border: 1px solid #222;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+button:hover:not(:disabled) {
+  background: #eee;
+}
+
+button:disabled {
+  color: #999;
+  border-color: #ccc;
+  cursor: default;
+}
+
+.ranking {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.ranking ol {
+  margin: 0;
+  padding-left: 24px;
+}
+
+.ranking li {
+  margin-bottom: 8px;
+}
+
+.ranking .title {
+  display: block;
+}
+
+.ranking .sold {
+  color: #555;
+}
+
+.note {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: #777;
+}
+
+.error {
+  border: 1px solid #c00;
+  color: #c00;
+  padding: 8px 12px;
+  border-radius: 4px;
+}

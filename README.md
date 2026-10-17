@@ -15,9 +15,9 @@ Azure MixBook 26H2「.NET を書かない人にこそ使ってほしい Aspire �
 
 ## 必要なもの
 
-- Docker
-- [uv](https://docs.astral.sh/uv/)
-- Node.js
+- Node.js（20.19 以降、または 22.12 以降）
+- [uv](https://docs.astral.sh/uv/)（Python 3.13 以降は uv が用意します）
+- Docker（Docker Compose）
 - bash（Windows の場合は Git Bash など）
 
 ## 起動方法

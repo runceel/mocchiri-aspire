@@ -32,10 +32,10 @@ PostgreSQL と Redis のデータは、AppHost を止めると消えます。
 
 ## テストデータの投入
 
-起動するたびに、別のターミナルでテストデータを投入してください。
-`DATABASE_URL` と `REDIS_URL` の値は、ダッシュボードで `api` リソースの詳細を開き、環境変数の欄で確認できます。
+起動するたびに、ダッシュボードの `api` リソースのメニュー（「…」）から「テストデータを投入」を実行してください。
+今入っているデータは消えて、テストデータが入り直します。
+このコマンドは `aspire run` で動かしているときだけ使えます。
 
-```bash
-cd api
-DATABASE_URL='<api の DATABASE_URL>' REDIS_URL='<api の REDIS_URL>' uv run python seed.py
-```
+## DB と Redis の中身を見る
+
+ダッシュボードの `postgres` と `cache` リソースのメニューから、ターミナルで `psql` と `redis-cli` を開けます。

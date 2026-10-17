@@ -4,6 +4,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 
 from db import RANKING_CACHE_KEY, cache, connect, create_tables
+from seed import reset_and_seed_books
+from settings import ENABLE_SEED_API
 from telemetry import configure_telemetry
 
 RANKING_CACHE_SECONDS = 30
@@ -23,6 +25,15 @@ configure_telemetry(app)
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+
+# 開発時だけ、テストデータを入れ直すエンドポイントを有効にする
+if ENABLE_SEED_API:
+
+    @app.post("/admin/seed")
+    def seed_data():
+        reset_and_seed_books()
+        return {"message": "テストデータを投入しました"}
 
 
 @app.get("/books")

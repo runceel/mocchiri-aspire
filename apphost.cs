@@ -9,9 +9,11 @@
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var postgres = builder.AddPostgres("postgres");
+var postgres = builder.AddPostgres("postgres")
+    .WithRepl();
 var db = postgres.AddDatabase("bookfest");
-var cache = builder.AddRedis("cache");
+var cache = builder.AddRedis("cache")
+    .WithRepl();
 
 var api = builder.AddUvicornApp("api", "./api", "main:app")
     .WithUv()
@@ -20,6 +22,16 @@ var api = builder.AddUvicornApp("api", "./api", "main:app")
     .WithHttpHealthCheck("/health")
     .WaitFor(db)
     .WaitFor(cache);
+
+if (builder.ExecutionContext.IsRunMode)
+{
+    api.WithEnvironment("ENABLE_SEED_API", "true")
+        .WithHttpCommand("/admin/seed", "テストデータを投入", commandOptions: new()
+        {
+            Description = "本と在庫のテストデータを入れ直します",
+            ConfirmationMessage = "今のデータは消えます。テストデータを投入しますか？",
+        });
+}
 
 builder.AddViteApp("frontend", "./frontend")
     .WithReference(api)

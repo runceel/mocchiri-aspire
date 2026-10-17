@@ -1,6 +1,6 @@
-"""テストデータを投入するスクリプト。
+"""テストデータを投入する。
 
-初回は `uv run python seed.py` を実行してください。
+ダッシュボードの「テストデータを投入」コマンド（POST /admin/seed）から呼ばれます。
 今入っているデータは全部消えます。
 """
 
@@ -37,8 +37,3 @@ def reset_and_seed_books() -> None:
             for _ in range(sold):
                 conn.execute("INSERT INTO sales (book_id) VALUES (%s)", (book["id"],))
     cache.delete(RANKING_CACHE_KEY)
-
-
-if __name__ == "__main__":
-    reset_and_seed_books()
-    print("テストデータを投入しました")
